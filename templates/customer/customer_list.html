@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% load static %}
+
+    <link rel = "stylesheet" href = "{% static 'inventory/products_list.css' %}">
+    <title>Document</title>
+
+
+</head>
+<body>
+    <table>
+        <th class="heading">
+            <td>first_name</td>
+            <td>last_name</td>
+            <td>email</td>
+            <td>address</td>
+          </th>
+
+          {%for customer in customers%}
+
+          <tr>
+            <td>{{customer.first_name}}</td>
+            <td>{{customer.last_name}}</td>
+            <td>{{customer.email}}</td>
+            <td><a href="{% url 'customer_detail_view' id=customer.id %}"><button>View customer details</button></a></td>
+         </tr>
+      {%endfor%}
+
+    </table>
+    
+</body>
+</html>

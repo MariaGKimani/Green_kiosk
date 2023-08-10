@@ -11,15 +11,10 @@
     <h4>{{product.name}}</h4>
     <img src="{{product.image.url}}"/>
     <p>{{product.description}} </p>
+    
     <span>{{product.price}}</span><a href="/templates/inventory/cart.html"></a>
-    <!-- <a href="/templates/inventory/cart.html"> <button> Add to cart </button></a> -->
-    <button>  <a href="/templates/inventory/cart.html"> Add to cart </a> </button>
+    
+    <button><a href="{% url 'cartt' %}"> Add to cart </a> </button>
 
-    <script>
-        document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            this.submit();
-        });
-    </script>
 </body>
 </html>

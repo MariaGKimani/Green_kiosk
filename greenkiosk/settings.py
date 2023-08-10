@@ -91,6 +91,9 @@ DATABASES = {
     }
 }
 
+MEDIA_ROOT =os.path.join(BASE_DIR, 'images')
+MEDIA_URL='/images/'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -121,6 +124,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Static files (CSS, JavaScript, Images)
