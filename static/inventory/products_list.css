@@ -1,0 +1,51 @@
+ 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b30808;
+    margin: 0;
+    padding: 0;
+}
+
+.products {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.products img {
+    max-width: 100%;
+    height: auto; 
+}
+
+.products h2 {
+    color: #006837; 
+    margin-top: 10px;
+}
+
+.products h3 {
+    color: #333; 
+    margin-top: 10px;
+}
+
+.products h4 {
+    color: #e65100; 
+    margin-top: 10px;
+}
+
+.products button {
+    background-color: #ff5722; 
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.products button:hover {
+    background-color: #e64a19; 
+} 
