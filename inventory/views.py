@@ -2,10 +2,28 @@ from django.shortcuts import render
 from .forms import ProductuploadForm
 from inventory.models import Product
 from django.shortcuts import redirect
+from django.db.models import Q
+from .models import Product
 
 
 #there are class based views and function based views
 # Create your views here.
+def index(request):
+    q = request.GET.get('q')  # Get the search query from the request's GET parameters
+
+    if q:  # Check if there's a search query
+        multiple_q = Q(Q(name__icontains=q) | Q(price__icontains=q))
+        data = Product.objects.filter(multiple_q)
+    else:
+        data = Product.objects.all()  # If no search query, retrieve all data
+
+    context = {
+        'products': data,
+        'q': q,  # Pass the search query to the template
+    }
+
+
+
 def upload_product(request):                      #the request represents a http request
     if request.method == 'POST':
         uploaded_product = request.FILES["image"]
@@ -26,7 +44,8 @@ def products_list(request):
   #return a single product 
 def  product_detail(request,id):
   product = Product.objects.get(id =id)
-  return render(request,"inventory/product_detail.html",{"product":product})
+  related_products = product.related_products.all()
+  return render(request,"inventory/product_detail.html",{"product":product,"related_products":related_products})
 
 
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href=" {% static 'css/products_list.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <th class="heading">
+            <td>Amount</td>
+            <td>Payment Option</td>
+            <td>Receipt</td>
+            <td>Status</td>
+          </th>
+          {%for payment in payments%}
+          <tr>
+            <td>{{payment.amount}}</td>
+            <td>{{payment.payment_option}}</td>
+            <td>{{payment.status}}</td>
+            <td><a href = "{% url 'payment_detail_view' id=payment.id%}"> Confirm</a></td>
+         </tr>
+      {%endfor%}
+    </table>
+</body>
+</html>

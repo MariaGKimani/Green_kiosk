@@ -3,28 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    {% load static %}
 
-    <link rel = "stylesheet" href = "{% static 'inventory/products_list.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .products {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .products img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow to images */
+        }
+
+        .products h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .products h3 {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .products h4 {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .products button {
+            background-color: #1ac762;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .products button:hover {
+            background-color: #03421e;
+        }
+    </style>
+
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'inventory/products_list.css' %}">
 
     <title>Document</title>
 </head>
 <body>
-          {%for product in products%}
 
-           <div class="products">
+    {% include "navbar.html" %}
 
-            <img src="{{product.image.url}}" alt="" />
-            <h2>{{product.name}}</h2>
-            <h3>{{product.description}}</h3>
-            <h4>{{product.price}}</h4>
-            <a href="{% url 'product_detail_view' id=product.id %}"><button>View product details</button></a>
-        <a href="{% url 'product_edit_view' id=product.id %}"><button>Edit product</button></a>
-           </div>
-         
-      {%endfor%}
-   
-    
+    <div class="products-container">
+        {% for product in products %}
+        <div class="products">
+            <img src="{{ product.image.url }}" alt="" />
+            <h2>{{ product.name }}</h2>
+            <h3>{{ product.description }}</h3>
+            <h4>{{ product.price }}</h4>
+            <a href="{% url 'product_detail_view' id=product.id %}">
+                <button>View product details</button>
+            </a>
+           
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

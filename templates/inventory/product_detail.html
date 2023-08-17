@@ -8,13 +8,53 @@
     <link rel="stylesheet" href=" {% static 'inventory/product_detail.css' %} ">
 </head>
 <body>
-    <h4>{{product.name}}</h4>
+    <div>
+        <h4>{{product.name}}</h4>
     <img src="{{product.image.url}}"/>
     <p>{{product.description}} </p>
     
     <span>{{product.price}}</span><a href="/templates/inventory/cart.html"></a>
     
     <button><a href="{% url 'cartt' %}"> Add to cart </a> </button>
+    </div>
+
+
+    <div class="products-container">
+        {% for prod in products %} {# Change the loop variable name to 'prod' or any other name #}
+        <div class="products">
+            <img src="{{ prod.image.url }}" alt="" />
+            <h2>{{ prod.name }}</h2>
+            <h3>{{ prod.description }}</h3>
+            <h4>{{ prod.price }}</h4>
+            <a href="{% url 'product_detail_view' id=prod.id %}">
+                <button>View product details</button>
+            </a>
+            <a href="{% url 'product_edit_view' id=prod.id %}">
+                <button>Edit product</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="related-products">
+        <h3>Related Products</h3>
+        {% for related_product in related_products %}
+        <div class="related-product">
+            <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}" />
+            <h4>{{ related_product.name }}</h4>
+            <p>{{ related_product.description }}</p>
+            <span>{{ related_product.price }}</span>
+            <a href="{% url 'product_detail_view' id=related_product.id %}">
+                <button>View Details</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+
+
+
 
 </body>
 </html>

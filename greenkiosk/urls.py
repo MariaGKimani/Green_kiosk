@@ -24,10 +24,13 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("inventory/", include("inventory.urls")),
-    path("Cartsystem/", include("Cartsystem.urls")),
+    path("Cartsystem/", include("Cartsystem.urls")),                      
     path("Customer/", include("Customer.urls")),
     path("Order/", include("Order.urls")),
     path("vendor/", include("vendor.urls")),
+    path("Notification/", include("Notification.urls")),
+    # path("images/", include ,
+    path("Payment/", include("Payment.urls")),
     
 ]
 

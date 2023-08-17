@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/products_detail.css' %}">
+</head>
+<body>
+    <h3>Notifiction</h3>
+    <table class="table">
+        <th>Message</th>
+        <th>Notification Type</th>
+        <th class="detail">Date</th>
+        <tr>
+            <td>{{notification.customer_name}}</td>
+            <td>{{notification.message}}</td>
+            <td>{{notification.date}}</td>
+            <td>{{notification.notification_type}}</td>
+        </tr>
+    </table>
+</body>
+</html>
