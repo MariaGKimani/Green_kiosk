@@ -10,12 +10,15 @@ def upload_cart(request):
     else:
         form = CartuploadForm()
     return render(request, "cart/upload_cart.html", {"form": form})
+
 def cart_list(request):
     carts = Cart.objects.all()
     return render (request, "cart/cart_list.html", {"carts": carts})
+
 def  cart_details(request,id):
   cart = Cart.objects.get(id =id)
   return render(request,"cart/cart_detail.html",{"cart": cart})
+
 def edit_cart(request, id):
     cart = Cart.objects.get(id=id)
     if request.method == "POST":
