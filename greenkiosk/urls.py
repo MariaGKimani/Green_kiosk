@@ -31,6 +31,7 @@ urlpatterns = [
     path("Notification/", include("Notification.urls")),
     # path("images/", include ,
     path("Payment/", include("Payment.urls")),
+    path('api/',include("api.urls")),
     
 ]
 
