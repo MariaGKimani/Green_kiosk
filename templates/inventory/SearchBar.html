@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: sans-serif;
+            font-size: 16px;
+          }
+          
+          h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+          }
+          
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+          }
+          
+          li {
+            margin-bottom: 10px;
+            margin-left: 15%;
+          }
+          
+          img {
+            width: 100px;
+            height: auto;
+          }
+          
+          h4 {
+            font-size: 18px;
+          }
+          
+          p {
+            margin-bottom: 5px;
+          }
+          
+          a {
+            text-decoration: none;
+            color: #000000;
+          }
+          
+          a:hover {
+            text-decoration: underline;
+          }
+          button {
+            background-color: #4CAF50; /* Green */
+            color: #ffffff;
+            font-size: 16px;
+            padding: 15px 32px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition-duration: 0.4s;
+          }
+          
+          button:hover {
+            background-color: #388E3C; /* Darker green */
+            color: #ffffff;
+          }
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% include "navbar.html" %}
+    <ul>
+        {% for product in products %}
+        <li>
+            <img src="{{ product.image.url }}" alt="Product Image" />
+            <h4>{{ product.name }}</h4>
+            <p>{{ product.description }}</p>
+            <p>Price: {{ product.price }}</p>
+            <a href="{% url 'product_detail_view' product.id %}"><button>View Details</button></a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</body>
+</html>

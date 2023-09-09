@@ -14,7 +14,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            
             margin: 0 auto;
             padding: 20px;
             background-color: white;
@@ -66,19 +66,43 @@
             cursor: pointer;
         }
 
+        .actions button:hover {
+            background-color: darkgreen;
+        }
+
         .totals {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #ccc;
+        }
+
+        .totals h4 {
+            margin: 5px;
+        }
+
+        .totals a {
+            text-decoration: none;
+        }
+
+        .checkout-button {
+            background-color: #057017;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .checkout-button:hover {
+            background-color: #0ab928;
         }
     </style>
     <title>Cart List</title>
 </head>
 <body>
     <div class="container">
+        {% include "navbar.html" %}
         {% for cart in carts %}
             <div class="product">
                 <div class="product-details">
@@ -88,17 +112,14 @@
                 </div>
                 <div class="actions">
                     <a href="{% url 'product_detail_view' id=cart.id %}">View More</a>
-                    <a href="{% url 'payment_list_view' %}">Checkout</a>
-                    <!-- <a href="{% url 'edit_cart_view' cart.id %}">Edit</a> -->
-                    <button>Add to Cart</button>
                     <button>Delete</button>
                 </div>
             </div>
         {% endfor %}
         <div class="totals">
-            <span>Total: 600</span><br>
-            <br>
-            <span>Shipping: 100</span>
+            <h4>Total: 600</h4>
+            <h4>Shipping: 100</h4>
+            <a href="{% url 'payment_list_view' %}" class="checkout-button">Checkout</a>
         </div>
     </div>
 </body>

@@ -3,34 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     {% load static %}
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
 
-    <link rel = "stylesheet" href = "{% static 'inventory/products_list.css' %}">
-    <title>Document</title>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
 
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
+        .heading {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #35862e;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #22ad29;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="{% static 'inventory/products_list.css' %}">
+    
+    <title>Customer List</title>
 </head>
 <body>
+    {% include "navbar.html" %}
     <table>
-        <th class="heading">
-            <td>first_name</td>
-            <td>last_name</td>
-            <td>email</td>
-            <td>address</td>
-          </th>
+        <tr class="heading">
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>address</th>
+        </tr>
 
-          {%for customer in customers%}
-
-          <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.last_name}}</td>
-            <td>{{customer.email}}</td>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.first_name }}</td>
+            <td>{{ customer.last_name }}</td>
+            <td>{{ customer.email }}</td>
             <td><a href="{% url 'customer_detail_view' id=customer.id %}"><button>View customer details</button></a></td>
-         </tr>
-      {%endfor%}
-
+        </tr>
+        {% endfor %}
     </table>
-    
 </body>
 </html>

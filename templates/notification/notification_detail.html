@@ -3,21 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {%load static%}
+    <title>Notification</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h3 {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail {
+            text-align: center;
+        }
+    </style>
     <link rel="stylesheet" href="{% static 'css/products_detail.css' %}">
 </head>
 <body>
-    <h3>Notifiction</h3>
+    <h3>Notification</h3>
     <table class="table">
-        <th>Message</th>
-        <th>Notification Type</th>
-        <th class="detail">Date</th>
         <tr>
-            <td>{{notification.customer_name}}</td>
-            <td>{{notification.message}}</td>
-            <td>{{notification.date}}</td>
-            <td>{{notification.notification_type}}</td>
+            <th>Message</th>
+            <th>Notification Type</th>
+            <th class="detail">Date</th>
+        </tr>
+        <tr>
+            <td>{{ notification.message }}</td>
+            <td>{{ notification.notification_type }}</td>
+            <td>{{ notification.date }}</td>
         </tr>
     </table>
 </body>

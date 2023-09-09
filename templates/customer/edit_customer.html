@@ -6,10 +6,47 @@
     {% load static %}
 
     <link rel="stylesheet" href=" {% static 'inventory/product_upload.css'%}">
+    <style>
+          
+          h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+          }
+          
+          form {
+            margin: 0 auto;
+            width: 500px;      
+            padding: 10px;
+          }
+          
+        
+          button {
+            background-color: #4CAF50; /* Green */
+            color: #ffffff;
+            font-size: 16px;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition-duration: 0.4s;
+          }
+          
+          button:hover {
+            background-color: #388E3C; /* Darker green */
+            color: #ffffff;
+          }
+          
+    
+    </style>
     
     <title>Document</title>
 </head>
 <body>
+    {% include "navbar.html" %}
     <h2>Edit customer</h2>
     <form method="POST" >
         {%csrf_token%}

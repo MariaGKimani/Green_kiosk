@@ -22,4 +22,4 @@ class RelatedProduct(models.Model):
     related_product = models.ForeignKey(Product, related_name='related_products', on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.product.nme} -> {self.related_product.name}"
+        return f"{self.product.name} -> {self.related_product.name}"

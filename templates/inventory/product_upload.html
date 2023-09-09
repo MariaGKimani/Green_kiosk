@@ -7,8 +7,65 @@
 
     <link rel="stylesheet" href=" {% static 'inventory/product_upload.css'%}">
     <title>Document</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: sans-serif;
+            font-size: 16px;
+          }
+          
+          h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #000000;
+            text-decoration-style: solid;
+            background-color: #4CAF50;          }
+          
+          form.upload_form {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid #cccccc;
+            padding: 10px;
+            background-color: #fafafa;
+          }
+          
+         
+          
+          button {
+            background-color: #4CAF50; /* Green */
+            color: #ffffff;
+            font-size: 16px;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition-duration: 0.4s;
+          }
+          
+          button:hover {
+            background-color: #388E3C; /* Darker green */
+            color: #ffffff;
+          }
+          
+          .upload_form h2 {
+            text-align: center;
+          }
+          
+          .upload_form .form-control {
+            margin-bottom: 10px;
+          }
+          
+          .upload_form .btn-primary {
+            float: right;
+          }
+    </style>
+    
 </head>
 <body>
+    {% include "navbar.html" %}
     <h2>Product Upload Form</h2>
     <form method="POST" class="upload_form" enctype="multipart/form-data">
         <!-- below is a varaible  (Cross_site request forgery)    it makes sure hacking cannot happen -->
@@ -17,5 +74,6 @@
         {{form.as_p}}
         <button type="submit">Save</button>
     </form>
+    {% include "footer.html" %}
 </body>
 </html>

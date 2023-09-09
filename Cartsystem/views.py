@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from  .forms import CartuploadForm
 from Cartsystem.models import Cart
+from inventory.models import Product
+
 # Create your views here.
 def upload_cart(request):
     if request.method == 'POST':
@@ -29,3 +31,4 @@ def edit_cart(request, id):
     else:
         form = CartuploadForm(instance=cart)
     return render(request, "cart/edit_cart.html", {"cart": cart})
+

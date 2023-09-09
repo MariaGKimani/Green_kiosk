@@ -8,25 +8,19 @@ from .models import Product
 
 #there are class based views and function based views
 # Create your views here.
-def index(request):
-    q = request.GET.get('q')  # Get the search query from the request's GET parameters
-
-    if q:  # Check if there's a search query
-        multiple_q = Q(Q(name__icontains=q) | Q(price__icontains=q))
-        data = Product.objects.filter(multiple_q)
+def product_search(request):
+    query = request.GET.get('q')
+    if query:
+        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
     else:
-        data = Product.objects.all()  # If no search query, retrieve all data
-
-    context = {
-        'products': data,
-        'q': q,  # Pass the search query to the template
-    }
+        products = Product.objects.all()
+    return render(request, 'inventory/SearchBar.html', {'products': products})
 
 
 
 def upload_product(request):                      #the request represents a http request
     if request.method == 'POST':
-        uploaded_product = request.FILES["image"]
+        # uploaded_product = request.FILES["image"]5
         form = ProductuploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -61,6 +55,18 @@ def cart_upload(request):
   return render(request,"cart/cart_upload.html")
 
 
+
+# def delete_product_view(request, id):
+#     product = Product.objects.get(id=id)
+
+#     if request.method == 'POST':
+#         product.delete()
+#         return redirect("product_list_view")  # Redirect to a page showing the list of products
+
+#     return render(request, "inventory/delete_product.html", {"product": product})
+
+
+
 def edit_product_view(request, id):
     product = Product.objects.get(id=id)
 
@@ -74,6 +80,8 @@ def edit_product_view(request, id):
         form = ProductuploadForm(instance=product)
 
     return render(request, "inventory/edit_product.html", {"form": form})
+  
+
 
 
 

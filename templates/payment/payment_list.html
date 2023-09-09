@@ -60,7 +60,8 @@
         </div>
         {% for payment in payments %}
             <div class="payment-row">
-                <div>{{ payment.amount }}</div>       
+                <div>{{ payment.amount }}</div> 
+                <div>  {{ payment.date }} </div>      
                 <!-- <div><a href="{% url 'payment_detail_view' id=payment.id %}">Confirm</a></div> -->
                 <div class="status">{{ payment.status }}</div>
             </div>
